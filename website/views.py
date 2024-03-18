@@ -1,7 +1,5 @@
 from flask import Blueprint, render_template, request, flash, jsonify
 from flask_login import login_required, current_user
-from .models import Note, Category
-from . import db
 import json
 # For showing date in local timezone
 import pytz
