@@ -120,6 +120,7 @@ Returns an empty JSON response, and a flash message to indicate it was successfu
 https://www.sqlalchemy.org/
 ### Usage in app
 * Defining the database models (User, Note, Category) using Python classes
+
 ## R8 - Describe your projects models in terms of the relationships they have with each other
 
 ### User model
@@ -158,4 +159,43 @@ This model represents the users notes and has the following attributes
 * `date`: Timestamp indicating when the note was created.
 * `user_id`: ID of the user who created the note (has a foreign key relationship with the User model).
 * `category_id`: ID of the category associated with the note (has a foreign key relationship with the category)
+
+#### Many-to-One Relationship (Note to User and Note to Category):
+*   Each note belongs to one user and one category (Many-to-One).
+*   In the Note model:
+    *   The user_id attribute (foreign key) references the user who created the note.
+    * The category_id attribute references the category to which the note belongs to
+### Category model
+```
+class Category(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    description = db.Column(db.String(255), nullable=False)
+
+    # Establishing a relationship with the Note model
+    note_refs = db.relationship('Note', backref='category_ref', lazy=True)
+```
+This model represents a category that can be attached to a note (optional) and has the following attributes
+
+* `id`: Unique id for the category.
+* `description`: Description of the category.
+
+#### One-to-Many Relationship (Category to Note):
+*   Each category can have multiple notes (One-to-Many).
+* In the Category model, the note_refs attribute establishes this relationship, indicating that each category can have multiple notes.
+* The category_id attribute in the Note model is the foreign key to reference the corresponding category.
+
+## R9 - Discuss the database relations to be implemented in your application
+In this application, the database has three main tables, User, Note and Category. The following are the database relationships to be implemented
+
+### User to note relation
+*  Each user can have multiple notes
+* Each note belongs only to a single user
+* This relationship is a one-to-many relationship, as one user can have many notes
+### Note to category relation
+* A note can optionally belong to one category
+* Each category can have many notes attached to it
+* This relationship is a one-to-many relationship, as one category can have many notes, but each note belongs to one category only
+
+## R10 - Describe the way tasks are allocated and tracked in your project
+
 
