@@ -1,0 +1,28 @@
+{% extends "base.html" %} 
+{% block title %}Home{% endblock %} 
+{% block content %}
+<h1 align="center">My Notes</h1>
+<ul class="list-group list-group-flush" id="notes">
+  {% for note in user.notes %}
+  <li class="list-group-item">
+    <div>{{ note.data }}</div>
+    <div>Category: {{ note.category.description if note.category else "Uncategorized" }}</div>
+    <div>Date created: {{ note.date.astimezone(local_timezone).strftime('%B %d, %Y') }}</div>
+    <button type="button" class="close" onClick="deleteNote({{ note.id }})">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </li>
+  {% endfor %}
+  
+</ul>
+<form method="POST">
+  Note
+  <textarea name="note" id="note" class="form-control"></textarea>
+  Category
+  <input name="category" id="category" class="form-control"></input>
+  <br />
+  <div align="center">
+    <button type="submit" class="btn btn-primary">Add Note</button>
+  </div>
+</form>
+{% endblock %}
