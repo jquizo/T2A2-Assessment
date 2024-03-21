@@ -18,7 +18,7 @@
     <title>{% block title %}Home{% endblock %}</title>
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark pt-2 pb-2" style="background: linear-gradient(90deg, rgba(34,34,34,1) 0%, rgb(51, 51, 51) 100%)">
       <button
         class="navbar-toggler"
         type="button"
@@ -31,11 +31,11 @@
         <div class="navbar-nav">
           <!-- Show homepage and logout if user is logged in -->
           {% if user.is_authenticated %}
-          <a class="nav-item nav-link" id="home" href="/">Home</a>
-          <a class="nav-item nav-link" id="logout" href="/logout">Logout</a>
+          <a class="nav-item nav-link mr-3 btn btn-primary text-white" id="home" href="/">Home</a>
+          <a class="nav-item nav-link mr-3 btn btn-outline-secondary text-white" id="logout" href="/logout">Logout</a>
           {% else %}
-          <a class="nav-item nav-link" id="login" href="/login">Login</a>
-          <a class="nav-item nav-link" id="register" href="/register">Register</a>
+          <a class="nav-item nav-link btn btn-outline-secondary text-white me-2 mr-3" id="login" href="/login">Login</a>
+          <a class="nav-item nav-link btn btn-primary text-white" id="register" href="/register">Register</a>
           {% endif %}
         </div>
       </div>
