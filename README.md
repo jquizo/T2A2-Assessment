@@ -1,8 +1,14 @@
 # Coder Academy T2A2 Assessment
  API Webserver
 ## Links
-* Github
-* Trello
+* [GitHub](https://github.com/jquizo/T2A2-Assessment)
+* [Trello](https://trello.com/b/qKQo7VGH/t2a2-web-api-assessment)
+
+* [R5 - Endpoints](#r5)
+* [R6 - ERD](#r6)
+* [R7 - Third party services](#r7)
+* [R8 - Models + relationships](#r8)
+* [References](#references)
 ## R1 – Identification of the problem
 The app aims to provide users with an easy-to-use note taking app, for jotting down personal notes and thoughts that may come to mind. Sometimes it is easier to have a browser tab open you can switch to, instead of using your phone/tablet to jot down notes, thoughts or other content. Notes input into this app has a date of creation attached to it, and users can add an added category (any string) to the note. The category tag is optional, and will be marked as uncategorized if this is left out.
 ## R2 - Why is it a problem that needs solving?
@@ -12,12 +18,12 @@ I have chosen PostgreSQL as the database system for this app, as it is a relatio
 While PostgreSQL has many advantages, compared to a NoSQL database system like MongoDB, it has less flexibility. MongoDB is more flexible in its data structures as you can quickly change requirements, schemas and is has more advantages for apps that have frequent requirement changes. Being able to store JSON is also more advantageous for apps where the data structure/schema has not yet been defined, as relational databases usually require planning the data tables, schemas and models.
 I have chosen PostgreSQL as it supports SQL, and SQL is a query language we have been learning in term 2 in Coder Academy and thus am more familiar with. As the schema and data tables for this app has already been determined, and PostgreSQL has better data integrity, PostgreSQL was the more suitable choice.
 ## R4 - Identify and discuss the key functionalities and benefits of an ORM
-An ORM (Object-relational mapping) is a tool for helping developers work with databases using object-oriented programming concepts, rather than using SQL statements. It maps object-oriented languages to relational database structures. Benefits of an ORM include (CHATGPT)
+An ORM (Object-relational mapping) is a tool for helping developers work with databases using object-oriented programming concepts, rather than using SQL statements. It maps object-oriented languages to relational database structures. Benefits of an ORM include  (OpenAI, 2022 GPT-3.5)
 1.	Simplifies interaction with databases – ORM’s allow developers to interact with the database using object-oriented programming concepts, such as classes and objects. This can improve workflow and productivity.
 2.	Reduces repetitive code – ORM’s generate SQL statements, which saves developers from writing repetitive SQL statements for database operations
 3.	Improves relationship management – ORM’s simplifies the management of relationships between tables in a database, for example using foreign keys to link different tables.
 4.	Improves security – ORM’s improve security by sanitizing input data, which can prevent cyber-attacks such as SQL injections, which are malicious user inputs that can allow users to perform unauthorized actions such as modifying tables.
-## R5 - Document all endpoints for your API
+## <a id="r5"></a> R5 - Document all endpoints for your API
 ## `/`
 
 **Description** – Serves as the home page of the app. If the user is logged in, allows them to view and add notes
@@ -89,9 +95,9 @@ Redirects user to this route @auth.route(‘/login’)
 Returns an empty JSON response, and a flash message to indicate it was successful and there is no additional data to return. 
 
 
-## R6 - Entity Relationship Diagram
+## <a id="r6"></a>R6 - Entity Relationship Diagram
 
-## R7 - Detail any third-party services used by the app
+## <a id="r7"></a>R7 - Detail any third-party services used by the app
 ### Flask 
 * Flask is a web framework for Python, and provides tools, features and libraries for quickly building web applications. It can improve developer’s workflow by helping users to build web applications faster. (https://flask.palletsprojects.com/en/3.0.x/)
 ### Usage in the app 
@@ -121,7 +127,7 @@ https://www.sqlalchemy.org/
 ### Usage in app
 * Defining the database models (User, Note, Category) using Python classes
 
-## R8 - Describe your projects models in terms of the relationships they have with each other
+## <a id="r8"></a>R8 - Describe your projects models in terms of the relationships they have with each other
 
 ### User model
 ```
@@ -198,4 +204,23 @@ In this application, the database has three main tables, User, Note and Category
 
 ## R10 - Describe the way tasks are allocated and tracked in your project
 
+I used Trello to keep track of my tasks. [Link to trello board](https://trello.com/b/qKQo7VGH/t2a2-web-api-assessment)
+
+Before starting the app, I would research online on how similar apps were built. First looking at the file structure, then deciding what routes/views I would need and then creating the models.
+
+I decided to use Bootstrap to simplify the frontend development so I could focus on the routes/functions 
+
+Once I had a rough idea of the routes/views I used a Trello board to input the tasks I would need to complete. I made a card for each route/view and each model. 
+
+The method of making a card for each route and model allowed me to make the tasks look smaller, which made it easier for me to start work and make progress. It also allowed me to focus on each individual tasks better.
+
+
+I had three main columns to track my progress, `To Do's`, `Doing`, & `Completed`. Inputting the individual cards in the To do's with some information and an estimate of the due date, and putting the cards I was working on in the Doing column and finally putting them in the completed column once I was done.
+
+# <a id="references"></a>References
+I acknowledge the use of ChatGPT (chat.openai.com) to help produce this application. The prompts used include 
+
+* (ChatGPT, OpenAI, 20th March 2024, Prompt: "What are the benefits of an ORM?" )
+
+* (ChatGPT, OpenAI, 17th March 2024, Prompt: "Could you help me create an ERD for an app that has three tables, user, note and category?" )
 
