@@ -51,5 +51,5 @@ def delete_note():
             db.session.delete(note)
             db.session.commit()
             flash('Note successfully deleted.', 'success')
-
+    # Returns empty json object to signify completion of function
     return jsonify({})

@@ -9,6 +9,38 @@
 * [R7 - Third party services](#r7)
 * [R8 - Models + relationships](#r8)
 * [References](#references)
+## Installation
+Having the latest version of Python is recommended
+1. Clone the repository to your local machine:  
+
+        git clone https://github.com/jquizo/T2A2-Assessment.git
+
+2. Navigate to the project directory
+
+        cd T2A2-Assessment
+
+3. Create a virtual environment
+
+        python -m venv venv     
+
+4. Install the required dependencies
+    
+        pip install -r requirements.txt
+
+        # Dependencies used
+        Flask
+        Flask_Login
+        flask_sqlalchemy
+        pytz
+        SQLAlchemy
+        Werkzeug
+
+5. Run app
+
+        python main.py
+
+You can also run the application on VSCode by opening the main.py file on VSCode and running python main.py on the terminal.
+
 ## R1 – Identification of the problem
 The app aims to provide users with an easy-to-use note taking app, for jotting down personal notes and thoughts that may come to mind. Sometimes it is easier to have a browser tab open you can switch to, instead of using your phone/tablet to jot down notes, thoughts or other content. Notes input into this app has a date of creation attached to it, and users can add an added category (any string) to the note. The category tag is optional, and will be marked as uncategorized if this is left out.
 ## R2 - Why is it a problem that needs solving?
@@ -96,6 +128,7 @@ Returns an empty JSON response, and a flash message to indicate it was successfu
 
 
 ## <a id="r6"></a>R6 - Entity Relationship Diagram
+![ERD](/website/static/T2A2%20Web%20API%20ERD.jpg)
 
 ## <a id="r7"></a>R7 - Detail any third-party services used by the app
 ### Flask 
@@ -194,13 +227,21 @@ This model represents a category that can be attached to a note (optional) and h
 In this application, the database has three main tables, User, Note and Category. The following are the database relationships to be implemented
 
 ### User to note relation
-*  Each user can have multiple notes
+* One-to-many relationship
+* Each user can have multiple notes
 * Each note belongs only to a single user
-* This relationship is a one-to-many relationship, as one user can have many notes
-### Note to category relation
-* A note can optionally belong to one category
+* The `user_id` attribute in the note table references the `id` attribute in the user table and is shown as a foreign key in the ERD
+### Category to note relation
+* One-to-many relationship
 * Each category can have many notes attached to it
-* This relationship is a one-to-many relationship, as one category can have many notes, but each note belongs to one category only
+* Each note belongs to one category only
+* The `category_id` attribute in the note table references the `id` attribute in the category table, and is shown as a foreign key in the ERD
+### Note to user relation
+* Many-to-one relationship with the user table
+* Each note belongs to one user
+### Note to category relation
+* Many-to-one relationship with the category table
+* Each note belongs to single category
 
 ## R10 - Describe the way tasks are allocated and tracked in your project
 
@@ -222,5 +263,5 @@ I acknowledge the use of ChatGPT (chat.openai.com) to help produce this applicat
 
 * (ChatGPT, OpenAI, 20th March 2024, Prompt: "What are the benefits of an ORM?" )
 
-* (ChatGPT, OpenAI, 17th March 2024, Prompt: "Could you help me create an ERD for an app that has three tables, user, note and category?" )
+* (ChatGPT, OpenAI, 17th March 2024, Prompt: "Help me create an ERD for an app that has three tables, user, note and category?" )
 
