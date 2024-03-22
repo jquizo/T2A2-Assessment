@@ -23,7 +23,7 @@ Having the latest version of Python is recommended
 
         python -m venv venv     
 
-4. Install the required dependencies
+3. Install the required dependencies
     
         pip install -r requirements.txt
 
@@ -38,8 +38,11 @@ Having the latest version of Python is recommended
 5. Run app
 
         python main.py
+    Running the app will create a local database.db in the instance folder. This will be the database used by the app.
+6. Viewing The App
 
-You can also run the application on VSCode by opening the main.py file on VSCode and running python main.py on the terminal.
+    Go to `http://127.0.0.1:5000`
+
 
 ## R1 – Identification of the problem
 The app aims to provide users with an easy-to-use note taking app, for jotting down personal notes and thoughts that may come to mind. Sometimes it is easier to have a browser tab open you can switch to, instead of using your phone/tablet to jot down notes, thoughts or other content. Notes input into this app has a date of creation attached to it, and users can add an added category (any string) to the note. The category tag is optional, and will be marked as uncategorized if this is left out.
@@ -199,6 +202,7 @@ This model represents the users notes and has the following attributes
 * `user_id`: ID of the user who created the note (has a foreign key relationship with the User model).
 * `category_id`: ID of the category associated with the note (has a foreign key relationship with the category)
 
+* `category = db.relationship('Category', backref='notes', lazy=True)` **This line tells SQLAlchemy to establish a relationship between the note and category models**
 #### Many-to-One Relationship (Note to User and Note to Category):
 *   Each note belongs to one user and one category (Many-to-One).
 *   In the Note model:
@@ -217,6 +221,7 @@ This model represents a category that can be attached to a note (optional) and h
 
 * `id`: Unique id for the category.
 * `description`: Description of the category.
+* `note_refs = db.relationship('Note', backref='category_ref', lazy=True)` **This line tells SQLAlchemy to establish a relationship between the category and note models**
 
 #### One-to-Many Relationship (Category to Note):
 *   Each category can have multiple notes (One-to-Many).
@@ -263,5 +268,5 @@ I acknowledge the use of ChatGPT (chat.openai.com) to help produce this applicat
 
 * (ChatGPT, OpenAI, 20th March 2024, Prompt: "What are the benefits of an ORM?" )
 
-* (ChatGPT, OpenAI, 17th March 2024, Prompt: "Help me create an ERD for an app that has three tables, user, note and category?" )
+* (ChatGPT, OpenAI, 16th March 2024, Prompt: "Help me create an ERD for an app that has three tables, user, note and category" )
 
